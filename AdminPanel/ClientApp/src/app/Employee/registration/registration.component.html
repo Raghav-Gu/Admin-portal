@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+        }
+
+        #ui {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 90px;
+        }
+
+        #ui label {
+            color: #333;
+
+        }
+
+        .social_media {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .social_media .item {
+            margin: 0 5px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 2px solid #eeeeee;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #eeeeee;
+            transition: all 0.5s ease;
+        }
+
+        .social_media .item:hover {
+            border: 2px solid #3aaf9f;
+            color: #3aaf9f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div id="ui">
+                    <form class="form-group" [formGroup]="exform">
+                        <div class="row">
+                            <h2 style="text-align: center;">Admin Etelligens</h2>
+                            <hr>
+                            <div class="col-lg-12">
+                                <label for="">First Name</label>
+                                <input formControlName='Firstname' type="text" name="FirstName" [(ngModel)]="service.formdata.FirstName" class="form-control" placeholder="First Name">
+                               
+                               
+                                <small *ngIf="exform.get('Firstname')?.invalid && exform.touched" class="text-danger">First Name is Required</small>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+
+
+                            <div class="col-lg-12">
+                                <label for="">Last Name</label>
+                                <input formControlName='lastname' type="text" name="fname" id="" class="form-control" placeholder="Last Name" [(ngModel)]="service.formdata.LastName">
+                                <small *ngIf="exform.get('lastname')?.invalid && exform.touched" class="text-danger">Last Name is Required</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Mobile</label>
+                                <input formControlName='mobile' type="text" name="mobile" id="" class="form-control" placeholder="Mobile" [(ngModel)]="service.formdata.MobileNo">   
+                                <small *ngIf="exform.get('mobile')?.invalid && exform.touched" class="text-danger">Mobile Number is Required</small>                              
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Email</label>
+                                <input formControlName='email' type="email" name="email" class="form-control" placeholder="Email"
+                                [(ngModel)]="service.formdata.Email">
+                                    <small *ngIf="exform.get('email')?.invalid && exform.touched" class="text-danger">Email is Required</small>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Password</label>
+                                <input formControlName='Password' type="password" name="fname" id="" class="form-control" required minlength="6"
+                                    placeholder="Password" [(ngModel)]="this.service.formdata.Password">
+                                    <small *ngIf="exform.get('Password')?.invalid && exform.touched" class="text-danger">Your password must be at least 6 characters in length. Your password must contain at least: One Special Character, One Uppercase Letter (A-Z), One Lowercase Letter (a-z), One Number (0-9).</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Confirm Password</label>
+                                <input formControlName='Confirmpassword' type="password" (change)="onChange()" name="fname" id="" class="form-control"
+                                    placeholder="Confirm password" pattern="{{this.service.formdata.Password}}" [(ngModel)]="service.formdata.ConfirmPassword">
+                                    <small *ngIf="exform.get('Confirmpassword')?.invalid && exform.touched" class="text-danger">Confirm Password is Required</small>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="form-check" style="margin-left: 15px;">
+                                <input type="checkbox" [disabled]="disabledchecked" [checked]="checks" (click)="oncheck($event)" name="" id=""style="margin:8px;">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    I agree to the terms and condition
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <!-- <button class="btn btn-primary" [disabled]="form.invalid"
+                                 type="button" (click)="onclick()"
+                                    style="border-radius: 30px;">Sign Up</button> -->
+                                <button class="btn btn-lg btn-outline-primary" (click)="onClick()"
+                                    style="border-radius: 30px;width: 242px;margin-left: -41px;" [disabled]="disabled">Sign Up</button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="social_media">
+                            <div class="item" style="color: rebeccapurple;">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="item" style="color: rebeccapurple;">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="item" style="color: rebeccapurple;">
+                                <i class="fab fa-google-plus-g"></i>
+                            </div>
+                        </div>
+                        
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
